@@ -1,0 +1,24 @@
+.row__posters {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px;
+}
+
+.row__posters::-webkit-scrollbar {
+  display: none;
+}
+
+.row__poster {
+  object-fit: contain;
+  width: 100%;
+  max-height: 100px;
+  margin-right: 10px;
+  /* this will wait 0.5 seconds to change size*/
+  transition: transform 450ms;
+}
+
+/* bubble up when you hover in combo with transition */
+.row__poster:hover {
+  transform: scale(1.08);
+}
