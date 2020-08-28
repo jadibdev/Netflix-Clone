@@ -10,6 +10,7 @@ const Banner = () => {
   const [movie, setMovie] = useState([]);
 
   const baseUrl = "https://api.themoviedb.org/3";
+
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(
@@ -20,14 +21,14 @@ const Banner = () => {
           Math.floor(Math.random() * (request.data.results.length - 1))
         ]
       );
+
       return request;
     }
     fetchData();
   }, []);
-  console.log("we are getting a movie", movie);
 
   function truncate(str, n) {
-    return str.length > n ? str.substr(0, n - 1) + "..." : str;
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
 
   return (
@@ -42,14 +43,13 @@ const Banner = () => {
       <div className="banner__contents">
         {/* title */}
         <h1 className="banner__title">{movie.name}</h1>
-
         <div>
           <button className="banner__button">Play</button>
           <button className="banner__button">My List</button>
         </div>
+        <h1 className="banner__description">{truncate(movie.overview, 150)}</h1>
 
-        <h1 className="banner__description">{movie.overview}</h1>
-        {/* description */}
+        <div className="banner__fadeBottom"></div>
       </div>
     </header>
   );
